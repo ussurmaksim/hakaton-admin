@@ -9,7 +9,7 @@ import { Notifications } from '@mantine/notifications';
 
 const StyleProvider = ({ children }) => {
     const theme = createTheme({
-        primaryColor: 'teal',
+        primaryColor: 'blue',
         components: {
             Input: Input.extend({
                 defaultProps: {

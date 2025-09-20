@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import {AppShell, Burger, Group, Title, NavLink, ActionIcon, Stack} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Home, User, LogOut } from 'lucide-react';
+import { Home, BellRing, LogOut } from 'lucide-react';
 import { STATIC_LINKS } from '@/shared/constants/staticLinks.js';
 import { useStore } from '@/shared/hooks/UseStore.js';
 
@@ -44,19 +44,26 @@ const AdminLayout = () => {
 
             <AppShell.Navbar p="md">
                 <NavLink
-                    label="Dashboard"
+                    label="События"
                     leftSection={<Home size={16} />}
                     component={Link}
                     to={STATIC_LINKS.ADMIN_ROOT}
                     active={pathname === STATIC_LINKS.ADMIN_ROOT}
                 />
-                {/*<NavLink*/}
-                {/*    label="Users"*/}
-                {/*    leftSection={<User size={16} />}*/}
-                {/*    component={Link}*/}
-                {/*    to={`${STATIC_LINKS.ADMIN_ROOT}`}*/}
-                {/*    active={pathname.startsWith(`${STATIC_LINKS.ADMIN_USERS}`)}*/}
-                {/*/>*/}
+                <NavLink
+                    label="Датчики"
+                    leftSection={<BellRing  size={16} />}
+                    component={Link}
+                    to={`${STATIC_LINKS.ADMIN_SENSORS}`}
+                    active={pathname.startsWith(`${STATIC_LINKS.ADMIN_SENSORS}`)}
+                />
+                <NavLink
+                    label="Места"
+                    leftSection={<BellRing size={16} />}
+                    component={Link}
+                    to={`${STATIC_LINKS.ADMIN_PLACES}`}
+                    active={pathname.startsWith(`${STATIC_LINKS.ADMIN_PLACES}`)}
+                />
             </AppShell.Navbar>
 
             <AppShell.Main>

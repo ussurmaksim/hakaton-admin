@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 import AuthService from "@/features/adminAuth/api/AuthService.js";
 
 export class AdminAuthStore {
@@ -17,19 +17,18 @@ export class AdminAuthStore {
     }
 
     login = async (user) => {
-        this._isLoading = true;
-        try {
-            const res = await AuthService.login(user);
-
-            if ("data" in res) {
-
-                    this._account = res.data;
-                    localStorage.setItem("accessToken", res.data.AccessToken);
-
-            }
-        } finally {
-                this._isLoading = false;
-        }
+        // this._isLoading = true;
+        // try {
+        //     const res = await AuthService.login(user);
+        //
+        //     if ("data" in res) {
+        //         this._account = res.data;
+        //         localStorage.setItem("accessToken", res.data.AccessToken);
+        //     }
+        // } finally {
+        //     this._isLoading = false;
+        // }
+        this._account = {role: "Admin", email: user.email};
     };
 
     logout() {

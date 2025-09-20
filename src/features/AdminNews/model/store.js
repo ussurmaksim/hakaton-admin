@@ -1,5 +1,5 @@
-import { makeAutoObservable, runInAction } from 'mobx';
-import { Client } from '@stomp/stompjs';
+import {makeAutoObservable, runInAction} from 'mobx';
+import {Client} from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 
 export class NewsStore {
@@ -53,8 +53,7 @@ export class NewsStore {
             },
             onWebSocketClose: (evt) => {
                 runInAction(() => {
-                    const reason = evt?.reason || `WS closed (code ${evt?.code ?? '—'})`;
-                    this.error = reason;
+                    this.error = evt?.reason || `WS closed (code ${evt?.code ?? '—'})`;
                     this.isConnected = false;
                     this.isConnecting = false;
                 });

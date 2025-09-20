@@ -9,7 +9,7 @@ const NotFound =() => {
             <Paper shadow="sm" p="md" radius="md" elevation="md" maw={500} mx="auto">
                 <Stack gap="md" justify="center" align="center">
                     <Title order={2}>404 страница не найдена</Title>
-                    <Button onClick={()=> nav(STATIC_LINKS.ADMIN_LOGIN)}>К входу</Button>
+                    <Button onClick={()=> nav(STATIC_LINKS.ADMIN_ROOT)}>К входу</Button>
                 </Stack>
             </Paper>
         </Container>

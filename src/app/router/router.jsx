@@ -13,6 +13,9 @@ import Users from "@/pages/Users/Users.jsx";
 import NotFound from "@/pages/NotFound/NotFound.jsx";
 import UsersForm from "@/pages/Users/UsersForm.jsx";
 import AdminDashboard from "@/pages/Dashboard/Dashboard.jsx";
+import SensorsPage from "@/pages/Sensors/SensorsPage.jsx";
+import AdminPlacesPage from "@/pages/Places/Places.jsx";
+import AdminPlacesForm from "@/features/AdminPlaces/ui/AdminPlacesForm.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +36,9 @@ export const router = createBrowserRouter([
                             { index: true, element: <AdminDashboard /> },
                             { path: 'users/create', element: <UsersForm /> },
                             { path: 'users/:id', element: <UsersForm /> },
+                            { path: STATIC_LINKS.ADMIN_SENSORS, element: <SensorsPage/>},
+                            { path: STATIC_LINKS.ADMIN_PLACES, element: <AdminPlacesPage/>},
+                            { path: STATIC_LINKS.ADMIN_PLACES_CREATE, element: <AdminPlacesForm/>},
                         ],
                     },
                 ],
