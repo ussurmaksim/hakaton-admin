@@ -3,9 +3,13 @@ import {observer} from "mobx-react-lite";
 import AdminPlacesForm from "@/features/AdminPlaces/ui/AdminPlacesForm.jsx";
 import {useNavigate} from "react-router-dom";
 import {STATIC_LINKS} from "@/shared/constants/staticLinks.js";
+import {useEffect} from "react";
 
 const AdminPlaces = observer(() => {
     const nav = useNavigate();
+    useEffect(() => {
+
+    }, []);
     return (
         <Container fluid>
             <Button onClick={() => nav(STATIC_LINKS.ADMIN_PLACES_CREATE)}>Импортировать места</Button>

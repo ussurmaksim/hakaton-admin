@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import {AppShell, MantineProvider} from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
+import { MantineProvider } from '@mantine/core';
+import AdminLayout from '@/widgets/admin/layout/AdminLayout.jsx';
 
-const App = () => {
-  return (
-      <MantineProvider defaultColorScheme="light">
-        <Outlet />
-      </MantineProvider>
-  );
-};
+const App = () => (
+    <MantineProvider defaultColorScheme="light">
+        <AdminLayout>
+            <Outlet />
+        </AdminLayout>
+    </MantineProvider>
+);
 
 export default App;

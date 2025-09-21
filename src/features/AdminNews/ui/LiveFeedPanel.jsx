@@ -1,24 +1,13 @@
-// features/Realtime/ui/LiveFeedPanel.jsx
 import { observer } from 'mobx-react-lite';
 import {
     Card, Stack, Text, ScrollArea, Divider, Group, Badge, Button,
     SegmentedControl, TextInput
 } from '@mantine/core';
 import { useMemo, useState } from 'react';
-import { useStore } from '@/shared/hooks/UseStore';
+import { useStore } from '@/shared/hooks/useStore';
 import { useSocket } from '@/shared/hooks/useSocket';
 import IncidentCard from '@/features/Incidents/ui/IncidentCard.jsx';
-
-// Лёгкая карточка новости
-function NewsCard({ it }) {
-    const title = it?.title ?? '';
-    const msg = it?.message ?? it?.body ?? '';
-    return (
-        <Card withBorder padding="sm" radius="sm">
-            <Text size="sm">{title || msg || JSON.stringify(it)}</Text>
-        </Card>
-    );
-}
+import NewsCard from '@/features/AdminNews/ui/NewsCard.jsx';
 
 const StatusDot = ({ ok }) => (
     <Badge color={ok ? 'green' : 'red'} variant="dot">
@@ -30,15 +19,10 @@ const LiveFeedPanel = observer(() => {
     const { incidentStore, newsStore } = useStore();
     const { connected, reconnect } = useSocket();
 
-    // ✅ без TS-дженериков в JSX
-    const [tab, setTab] = useState('incidents'); // 'incidents' | 'news'
+    const [tab, setTab] = useState('incidents');
     const [q, setQ] = useState('');
 
-    // безопасно берём ленту
-    const rawUnsafe = tab === 'incidents'
-        ? (incidentStore?.items)
-        : (newsStore?.items);
-
+    const rawUnsafe = tab === 'incidents' ? (incidentStore?.items) : (newsStore?.items);
     const raw = Array.isArray(rawUnsafe) ? rawUnsafe : [];
 
     const items = useMemo(() => {
@@ -89,7 +73,7 @@ const LiveFeedPanel = observer(() => {
 
             <Divider my="sm" />
 
-            <ScrollArea h={340} type="always">
+            <ScrollArea mah={600} h="100vh" type="always">
                 <Stack gap="xs">
                     {items.length === 0 ? (
                         <Text c="dimmed" fs="italic">

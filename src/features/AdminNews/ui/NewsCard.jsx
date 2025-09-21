@@ -1,10 +1,15 @@
-import { Card, Text } from '@mantine/core';
+import { Card, Stack, Text, Title } from '@mantine/core';
+
 export default function NewsCard({ it }) {
-    const title = it?.title ?? '';
-    const msg   = it?.message ?? it?.body ?? '';
+    if (!it) return null;
+    const title = it.title ?? '';
+    const msg = it.message ?? it.body ?? '';
     return (
         <Card withBorder padding="sm" radius="sm">
-            <Text size="sm">{title || msg || JSON.stringify(it)}</Text>
+            <Stack spacing={2}>
+                {title && <Title order={4}>{title}</Title>}
+                {msg && <Text size="sm">{msg}</Text>}
+            </Stack>
         </Card>
     );
 }

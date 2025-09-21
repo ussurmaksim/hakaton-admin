@@ -1,22 +1,22 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import {AppShell, Burger, Group, Title, NavLink, ActionIcon, Stack} from '@mantine/core';
+import { AppShell, Burger, Group, Title, NavLink, ActionIcon, Stack, Loader } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Home, BellRing, LogOut } from 'lucide-react';
+import {Home, BellRing, LogOut, Video, Brain, Camera} from 'lucide-react';
 import { STATIC_LINKS } from '@/shared/constants/staticLinks.js';
-import { useStore } from '@/shared/hooks/UseStore.js';
+import { useStore } from '@/shared/hooks/useStore.js';
 
 const AdminLayout = () => {
     const [opened, { toggle }] = useDisclosure();
     const { adminAuth } = useStore();
-    const {account, isLoading} = adminAuth;
+    const { account, isLoading } = adminAuth;
     const { pathname } = useLocation();
 
     if (isLoading) {
         return (
             <Stack align="center" justify="center" h="100vh">
-                <Loader size="lg"/>
+                <Loader size="lg" />
             </Stack>
-        )
+        );
     }
 
     return (
@@ -32,9 +32,7 @@ const AdminLayout = () => {
                         <Title order={4}>АДМИН ПАНЕЛЬ</Title>
                     </Group>
                     <Group>
-                        <Title order={5}>
-                            {account.email}
-                        </Title>
+                        <Title order={5}>{account?.email}</Title>
                         <ActionIcon variant="subtle" onClick={() => adminAuth.logout()} aria-label="Выйти">
                             <LogOut size={18} />
                         </ActionIcon>
@@ -47,22 +45,43 @@ const AdminLayout = () => {
                     label="События"
                     leftSection={<Home size={16} />}
                     component={Link}
-                    to={STATIC_LINKS.ADMIN_ROOT}
-                    active={pathname === STATIC_LINKS.ADMIN_ROOT}
+                    to={STATIC_LINKS.HOME}
+                    active={pathname === STATIC_LINKS.HOME}
                 />
                 <NavLink
                     label="Датчики"
-                    leftSection={<BellRing  size={16} />}
+                    leftSection={<BellRing size={16} />}
                     component={Link}
-                    to={`${STATIC_LINKS.ADMIN_SENSORS}`}
-                    active={pathname.startsWith(`${STATIC_LINKS.ADMIN_SENSORS}`)}
+                    to={STATIC_LINKS.ADMIN_SENSORS}
+                    active={pathname.startsWith(STATIC_LINKS.ADMIN_SENSORS)}
                 />
                 <NavLink
                     label="Места"
                     leftSection={<BellRing size={16} />}
                     component={Link}
-                    to={`${STATIC_LINKS.ADMIN_PLACES}`}
-                    active={pathname.startsWith(`${STATIC_LINKS.ADMIN_PLACES}`)}
+                    to={STATIC_LINKS.ADMIN_PLACES}
+                    active={pathname.startsWith(STATIC_LINKS.ADMIN_PLACES)}
+                />
+                <NavLink
+                    label="Камеры"
+                    leftSection={<Video size={16} />}
+                    component={Link}
+                    to={STATIC_LINKS.ADMIN_CAMERAS}
+                    active={pathname.startsWith(STATIC_LINKS.ADMIN_CAMERAS)}
+                />
+                {/*<NavLink*/}
+                {/*    label="AI-сводка"*/}
+                {/*    leftSection={<Brain size={16} />}*/}
+                {/*    component={Link}*/}
+                {/*    to={STATIC_LINKS.ADMIN_AI_DIGEST}*/}
+                {/*    active={pathname.startsWith(STATIC_LINKS.ADMIN_AI_DIGEST)}*/}
+                {/*/>*/}
+                <NavLink
+                    label="Камеры (Live)"
+                    leftSection={<Camera size={16} />}
+                    component={Link}
+                    to={STATIC_LINKS.ADMIN_CAMERAS_LIVE}
+                    active={pathname.startsWith(STATIC_LINKS.ADMIN_CAMERAS_LIVE)}
                 />
             </AppShell.Navbar>
 

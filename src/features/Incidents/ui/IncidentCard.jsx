@@ -1,4 +1,3 @@
-// IncidentCard.jsx
 import { Card, Group, Badge, Text, Stack, Code } from '@mantine/core';
 
 const levelColor = (lvl) =>

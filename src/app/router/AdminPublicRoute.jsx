@@ -1,10 +1,9 @@
-// routes/AdminPublicRoute.jsx
 import { useStore } from '@/shared/hooks/useStore.js';
-import { Navigate, Outlet } from 'react-router-dom';
-import { STATIC_LINKS } from '@/shared/constants/staticLinks.js';
+import { Outlet } from 'react-router-dom';
 
 export default function AdminPublicRoute() {
-    const { account } = useStore().adminAuth;
-    if (account?.role === 'Admin') return <Navigate to={STATIC_LINKS.ADMIN_ROOT} replace />;
+    // Временно пропускаем всегда. Если нужно — тут сделай проверку роли.
+    const { adminAuth } = useStore();
+    void adminAuth; // чтобы линтер не ругался
     return <Outlet />;
 }

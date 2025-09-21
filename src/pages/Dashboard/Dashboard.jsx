@@ -1,16 +1,23 @@
 // pages/AdminDashboard/AdminDashboard.jsx
 import { observer } from 'mobx-react-lite';
-import { Container, Grid } from '@mantine/core';
+import {Accordion, Container, Divider, Grid, Text} from '@mantine/core';
 import LiveFeedPanel from '@/features/AdminNews/ui/LiveFeedPanel.jsx';
+import NewsCreateForm from "@/features/AdminNews/ui/NewsCreateForm.jsx";
 
 const AdminDashboard = observer(() => (
     <Container size="lg" py="xl">
-        <Grid>
-            <Grid.Col span={12} md={8}>
-                <LiveFeedPanel />
-            </Grid.Col>
-            <Grid.Col span={12} md={4}>{/* другие виджеты */}</Grid.Col>
-        </Grid>
+        <Accordion variant="separated" chevronPosition="right" multiple={false}>
+            <Accordion.Item value="create">
+                <Accordion.Control>
+                    <Text fw={500}>Создать событие</Text>
+                </Accordion.Control>
+                <Accordion.Panel>
+                    <NewsCreateForm onCreated={() => { /* при необходимости можно обновить список из API */ }} />
+                </Accordion.Panel>
+            </Accordion.Item>
+        </Accordion>
+        <Divider my="sm" />
+        <LiveFeedPanel />
     </Container>
 ));
 

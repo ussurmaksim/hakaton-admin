@@ -3,16 +3,10 @@ export const STATIC_LINKS = {
     ADMIN_ROOT: '/admin',
     ADMIN_LOGIN: '/admin/login',
 
-    // #### users #### //
-    ADMIN_USERS: '/admin/users',
-    ADMIN_USERS_CREATE: '/admin/users/create',
-    ADMIN_USERS_EDIT: '/admin/users/:id',
-
-    // ####  #### //
-    ADMIN_SENSORS: '/admin/sensors',
-
-
-    // ####   #### //
-    ADMIN_PLACES: '/admin/places',
-    ADMIN_PLACES_CREATE: '/admin/places/create',
+    ADMIN_SENSORS: '/sensors',
+    ADMIN_PLACES: '/places',
+    ADMIN_PLACES_CREATE: '/places/create',
+    ADMIN_CAMERAS: '/cameras',
+    ADMIN_CAMERAS_LIVE: '/cameras/live',
+    ADMIN_AI_DIGEST: '/ai-digest',
 };

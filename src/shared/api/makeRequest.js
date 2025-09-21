@@ -10,7 +10,9 @@ export const makeRequest = async ({
                                       responseType = 'json',
                                       signal,
                                   }) => {
-    url = `${import.meta.env.VITE_API_URL + `/${import.meta.env.VITE_NODE}` + '/api/admin' + url}`;
+    const base = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+    const node = import.meta.env.VITE_NODE || 'node-a';
+    const fullUrl = `${base}/${node}/api/admin${url}`;
 
     if (authToken) {
         const token = localStorage.getItem('accessToken');
@@ -18,21 +20,12 @@ export const makeRequest = async ({
     }
 
     try {
-        return await axios
-            .request({
-                url,
-                method,
-                headers,
-                params,
-                data,
-                responseType,
-                signal,
-            });
+        return await axios.request({ url: fullUrl, method, headers, params, data, responseType, signal });
     } catch (error) {
         return {
-            message: error.response.data.message,
-            timestamp: error.response.data.timestamp,
-            status: error.response?.status || 0,
+            message: error?.response?.data?.message || error.message,
+            timestamp: error?.response?.data?.timestamp,
+            status: error?.response?.status || 0,
         };
     }
 };

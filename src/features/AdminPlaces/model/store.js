@@ -16,12 +16,14 @@ export class AdminPlacesStore {
         this._places = Array.isArray(list) ? list : [];
     }
 
+    fetchPlaces = async () => {
+        const res = await AdminPlacesService.fetchPlaces();
+    }
+
     createPlaces = async (places) => {
-
-            const res = await AdminPlacesService.crPlaces(places);
-            if ('data' in res) {
-                return res;
-            }
-
+        const res = await AdminPlacesService.crPlaces(places);
+        if ('data' in res) {
+            return res;
+        }
     };
 }

@@ -8,6 +8,8 @@ class AdminPlacesService {
                 data: places,
             });
     }
+
+    getPlaces () {}
 }
 
 export default new AdminPlacesService();
