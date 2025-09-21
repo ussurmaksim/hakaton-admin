@@ -13,6 +13,7 @@ import CamerasPage from "@/pages/Cameras/CamerasPage.jsx";
 import AIDigestPage from "@/pages/AIDigest/AIDigestPage.jsx";
 import LiveCamerasPage from "@/pages/Cameras/LiveCamerasPage.jsx";
 import AdminPlacesForm from "@/features/AdminPlaces/ui/AdminPlacesForm.jsx";
+import NodesWatcherPage from "@/pages/NodesWatcher/NodesWatcher.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
                     { path: STATIC_LINKS.ADMIN_AI_DIGEST, element: <AIDigestPage /> },
                     { path: STATIC_LINKS.ADMIN_CAMERAS_LIVE, element: <LiveCamerasPage /> },
                     { path: STATIC_LINKS.ADMIN_PLACES_CREATE, element: <AdminPlacesForm />},
+                    { path: STATIC_LINKS.ADMIN_NODES, element: <NodesWatcherPage />}
                 ],
             },
         ],

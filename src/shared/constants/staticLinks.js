@@ -9,4 +9,5 @@ export const STATIC_LINKS = {
     ADMIN_CAMERAS: '/cameras',
     ADMIN_CAMERAS_LIVE: '/cameras/live',
     ADMIN_AI_DIGEST: '/ai-digest',
+    ADMIN_NODES: '/nodes',
 };

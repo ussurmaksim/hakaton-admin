@@ -34,7 +34,7 @@ const gatewayBase = (() => {
     const gw = import.meta.env.VITE_GATEWAY_BASE;
     if (gw) return gw.replace(/\/+$/, '');
     const api = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
-    const node = import.meta.env.VITE_NODE || 'node-a'; // ВАЖНО: VITE_NODE (а не VITE_API_NODE)
+    const node = import.meta.env.VITE_API_NODE || 'node-a'; // ВАЖНО: VITE_NODE (а не VITE_API_NODE)
     return api ? `${api}/${node}` : '';
 })();
 

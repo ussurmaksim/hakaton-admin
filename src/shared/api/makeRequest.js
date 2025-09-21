@@ -11,7 +11,7 @@ export const makeRequest = async ({
                                       signal,
                                   }) => {
     const base = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
-    const node = import.meta.env.VITE_NODE || 'node-a';
+    const node = import.meta.env.VITE_API_NODE || 'node-a';
     const fullUrl = `${base}/${node}/api/admin${url}`;
 
     if (authToken) {

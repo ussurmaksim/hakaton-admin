@@ -10,7 +10,7 @@ export const makePublicRequest = async ({
                                             signal,
                                         }) => {
     const base = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
-    const node = import.meta.env.VITE_NODE || 'node-a';
+    const node = import.meta.env.VITE_API_NODE || 'node-a';
     // nginx проксирует public на /<node>/api/public/*
     const fullUrl = `${base}/${node}/api/public${url}`;
 

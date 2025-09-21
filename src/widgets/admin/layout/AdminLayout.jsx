@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { AppShell, Burger, Group, Title, NavLink, ActionIcon, Stack, Loader } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import {Home, BellRing, LogOut, Video, Brain, Camera} from 'lucide-react';
+import {Home, BellRing, LogOut, Video, Brain, Camera, MapPin, Router } from 'lucide-react';
 import { STATIC_LINKS } from '@/shared/constants/staticLinks.js';
 import { useStore } from '@/shared/hooks/useStore.js';
 
@@ -57,18 +57,18 @@ const AdminLayout = () => {
                 />
                 <NavLink
                     label="Места"
-                    leftSection={<BellRing size={16} />}
+                    leftSection={<MapPin size={16} />}
                     component={Link}
                     to={STATIC_LINKS.ADMIN_PLACES}
                     active={pathname.startsWith(STATIC_LINKS.ADMIN_PLACES)}
                 />
-                <NavLink
-                    label="Камеры"
-                    leftSection={<Video size={16} />}
-                    component={Link}
-                    to={STATIC_LINKS.ADMIN_CAMERAS}
-                    active={pathname.startsWith(STATIC_LINKS.ADMIN_CAMERAS)}
-                />
+                {/*<NavLink*/}
+                {/*    label="Камеры"*/}
+                {/*    leftSection={<Video size={16} />}*/}
+                {/*    component={Link}*/}
+                {/*    to={STATIC_LINKS.ADMIN_CAMERAS}*/}
+                {/*    active={pathname.startsWith(STATIC_LINKS.ADMIN_CAMERAS)}*/}
+                {/*/>*/}
                 {/*<NavLink*/}
                 {/*    label="AI-сводка"*/}
                 {/*    leftSection={<Brain size={16} />}*/}
@@ -82,6 +82,13 @@ const AdminLayout = () => {
                     component={Link}
                     to={STATIC_LINKS.ADMIN_CAMERAS_LIVE}
                     active={pathname.startsWith(STATIC_LINKS.ADMIN_CAMERAS_LIVE)}
+                />
+                <NavLink
+                    label="Узлы"
+                    leftSection={<Router  size={16} />}
+                    component={Link}
+                    to={STATIC_LINKS.ADMIN_NODES}
+                    active={pathname.startsWith(STATIC_LINKS.ADMIN_NODES)}
                 />
             </AppShell.Navbar>
 
